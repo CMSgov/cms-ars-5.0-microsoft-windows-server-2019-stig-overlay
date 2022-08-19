@@ -43,7 +43,6 @@ inputs:
   - name: temporary_account_period_phrase # V-92975
     desc: "List the number of hours/days that temporary accounts remain active for"
     type: String
-    profile: microsoft-windows-server-2019-stig-baseline
     <% if ['High-HVA', 'Moderate-HVA'].include? ENV['BASELINE'] %>
     value: "12 hours"
     <% elsif ENV['BASELINE'] == 'High' %>
@@ -53,6 +52,7 @@ inputs:
     <% else %>
     value: "72 hours"
     <% end %>
+    profile: microsoft-windows-server-2019-stig-baseline
 
   - name: emergency_account_period # V-92977
     desc: "List the number of days that temporary accounts remain active for"
