@@ -16,7 +16,7 @@ inputs:
   - name: system_categorization
     desc: "Selected system baseline based on the environment variable"
     type: String
-    value: <%= ENV['BASELINE'].nil? ? 'Moderate' : ENV['BASELINE'] %>
+    value: <%= ENV['BASELINE'].nil? ? 'Moderate (Default)' : ENV['BASELINE'] %>
 
   - name: org_name
     desc: "Name of the organization running this profile"
