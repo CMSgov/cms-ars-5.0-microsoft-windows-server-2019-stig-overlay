@@ -16,7 +16,7 @@ inputs:
   - name: system_categorization
     desc: "Selected system baseline based on the environment variable"
     type: String
-    value: <%= ENV['BASELINE'].nil? ? 'Moderate (Default)' : ENV['BASELINE'] %>
+    value: <%= ENV['BASELINE'].nil? ? 'Moderate' : ENV['BASELINE'] %>
 
   - name: org_name
     desc: "Name of the organization running this profile"
@@ -43,6 +43,7 @@ inputs:
   - name: temporary_account_period_phrase # V-92975
     desc: "List the number of hours/days that temporary accounts remain active for"
     type: String
+    profile: microsoft-windows-server-2019-stig-baseline
     <% if ['High-HVA', 'Moderate-HVA'].include? ENV['BASELINE'] %>
     value: "12 hours"
     <% elsif ENV['BASELINE'] == 'High' %>
@@ -52,7 +53,6 @@ inputs:
     <% else %>
     value: "72 hours"
     <% end %>
-    profile: microsoft-windows-server-2019-stig-baseline
 
   - name: emergency_account_period # V-92977
     desc: "List the number of days that temporary accounts remain active for"
