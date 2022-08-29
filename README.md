@@ -31,7 +31,7 @@ Latest versions and other installation options are available at https://cinc.sh/
 ### (if undefined defaults to Moderate baseline)
 
 ```
-# BASELINE (choices: Low, LowHVA, Moderate, ModerateHVA, High, HighHVA)
+# BASELINE (choices: Low, Low-HVA, Moderate, Moderate-HVA, High, High-HVA)
 # (if undefined defaults to Moderate baseline)
 
 on linux:
