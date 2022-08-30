@@ -11,18 +11,20 @@ __For the best security of the runner, always install on the runner the _latest 
 Latest versions and installation options are available at the [InSpec](http://inspec.io/) site.
 
 ## Running This Overlay Directly from Github
+<details><summary>Click to expand</summary>
+<p><br>
 
 ```
 # How to run
 BASELINE=<your_system_categorization> inspec exec https://github.com/CMSgov/cms-ars-5.0-microsoft-windows-server-2019-stig-overlay/archive/main.tar.gz --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> -t winrm://<hostname> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
 
-### Different Run Options
-
-  [Full exec options](https://docs.chef.io/inspec/cli/#options-3)
+</p>
+</details>
 
 ## Running This Overlay from a local Archive copy 
-
+<details><summary>Click to expand</summary>
+<p><br>
 If your runner is not always expected to have direct access to GitHub, use the following steps to create an archive bundle of this overlay and all of its dependent tests:
 
 (Git is required to clone the InSpec profile using the instructions below. Git can be downloaded from the [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) site.)
@@ -46,6 +48,12 @@ cd ..
 inspec archive cms-ars-5.0-microsoft-windows-server-2019-stig-overlay --overwrite
 BASELINE=<your_system_categorization> inspec exec <name of generated archive> --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> -t winrm://<hostname> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
+</p>
+</details>
+
+### Different Run Options
+
+  [Full exec options](https://docs.chef.io/inspec/cli/#options-3)
 
 ## Using Heimdall for Viewing the JSON Results
 
@@ -63,7 +71,8 @@ The JSON InSpec results file may also be loaded into a __[full heimdall server](
 To report a bug or feature request, please open an [issue](https://github.com/CMSgov/cms-ars-5.0-microsoft-windows-server-2019-stig-overlay/issues/new).
 
 ### NOTICE
-
+<details><summary>Click to expand</summary>
+<p><br>
 © 2018-2020 The MITRE Corporation.
 
 Approved for Public Release; Distribution Unlimited. Case Number 18-3678.
@@ -83,3 +92,5 @@ For further information, please contact The MITRE Corporation, Contracts Managem
 ### NOTICE 
 
 DISA STIGs are published by DISA IASE, see: https://iase.disa.mil/Pages/privacy_policy.aspx
+</p>
+</details>
