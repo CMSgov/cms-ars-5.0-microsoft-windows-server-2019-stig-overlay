@@ -38,8 +38,6 @@ inputs:
     value: 60
     <% elsif ENV['BASELINE'].nil? %>
     value: 60
-    <% else %>
-    value: 3
     <% end %>
 
   - name: temporary_account_period_phrase # V-92975
@@ -54,8 +52,6 @@ inputs:
     value: "60 days"
     <% elsif ENV['BASELINE'].nil? %>
     value: "60 days"
-    <% else %>
-    value: "72 hours"
     <% end %>
 
   - name: emergency_account_period # V-92977
@@ -68,8 +64,6 @@ inputs:
     value: 1
     <% elsif ENV['BASELINE'].nil? %>
     value: 1
-    <% else %>
-    value: 3
     <% end %>
 
   - name: emergency_account_period_phrase # V-92977
@@ -82,20 +76,18 @@ inputs:
     value: "24 hours"
     <% elsif ENV['BASELINE'].nil? %>
     value: "24 hours"
-    <% else %>
-    value: "72 hours"
     <% end %>
 
   - name: max_pass_lockout # V-93141
     desc: "Account lockout threshold based on invalid logon attempts"
     type: Numeric
     profile: microsoft-windows-server-2019-stig-baseline
-    <% if ['Moderate', 'Moderate-HVA', 'Low', 'Low-HVA'].include? ENV['BASELINE'] %>
+    <% if ['High', 'High-HVA'].include? ENV['BASELINE'] %>
+    value: 3
+    <% elsif ['Moderate', 'Moderate-HVA', 'Low', 'Low-HVA'].include? ENV['BASELINE'] %>
     value: 5
     <% elsif ENV['BASELINE'].nil? %>
     value: 5
-    <% else %>
-    value: 3
     <% end %>
 
   - name: pass_lock_time # V-93143
@@ -112,10 +104,10 @@ inputs:
     value: 0
     <% elsif ['Moderate-HVA', 'Moderate'].include? ENV['BASELINE'] %>
     value: 60
+    <% elsif ['Low-HVA', 'Low'].include? ENV['BASELINE'] %>
+    value: 15
     <% elsif ENV['BASELINE'].nil? %>
     value: 60
-    <% else %>
-    value: 15
     <% end %>
 
   - name: app_password_age # V-93209
@@ -124,8 +116,6 @@ inputs:
     profile: microsoft-windows-server-2019-stig-baseline
     <% if ['High-HVA', 'Moderate-HVA', 'Low-HVA'].include? ENV['BASELINE'] %>
     value: 60
-    <% else %>
-    value: 365
     <% end %>
 
   - name: maximum_password_age_machine # V-93285
@@ -134,52 +124,6 @@ inputs:
     profile: microsoft-windows-server-2019-stig-baseline
     <% if ['High-HVA', 'Moderate-HVA', 'Low-HVA'].include? ENV['BASELINE'] %>
     value: 60
-    <% else %>
-    value: 30
-    <% end %>
-
-  - name: minimum_password_length_manual # V-93461
-    desc: "Set the minimum password length for manually managed applications stated by your organization"
-    type: Numeric
-    profile: microsoft-windows-server-2019-stig-baseline
-    <% if ['High-HVA', 'Moderate-HVA', 'Low-HVA'].include? ENV['BASELINE'] %>
-    value: 20
-    <% else %>
-    value: 15
-    <% end %>
-
-  - name: minimum_password_length # V-93463
-    desc: "Set the minimum password length stated by your organization"
-    type: Numeric
-    profile: microsoft-windows-server-2019-stig-baseline
-    <% if ['High-HVA', 'Moderate-HVA', 'Low-HVA'].include? ENV['BASELINE'] %>
-    value: 20
-    <% else %>
-    value: 15
-    <% end %>
-
-  - name: maximum_idle_time # V-93509
-    desc: "Set the maximum connection idle time stated by your organization"
-    type: Numeric
-    profile: microsoft-windows-server-2019-stig-baseline
-    <% if ['High-HVA', 'High', 'Moderate-HVA', 'Moderate'].include? ENV['BASELINE'] %>
-    value: 1800
-    <% elsif ENV['BASELINE'].nil? %>
-    value: 1800
-    <% else %>
-    value: 300
-    <% end %>
-
-  - name: maximum_idle_time_phrase # V-93509
-    desc: "Set the maximum connection idle time stated by your organization"
-    type: String
-    profile: microsoft-windows-server-2019-stig-baseline
-    <% if ['High-HVA', 'High', 'Moderate-HVA', 'Moderate'].include? ENV['BASELINE'] %>
-    value: "30 minutes"
-    <% elsif ENV['BASELINE'].nil? %>
-    value: "30 minutes"
-    <% else %>
-    value: "5 minutes"
     <% end %>
 
   - name: unused_account_age # V-93457
@@ -192,8 +136,46 @@ inputs:
     value: 60
     <% elsif ENV['BASELINE'].nil? %>
     value: 60
-    <% else %>
-    value: 35
+    <% end %>
+
+  - name: minimum_password_length_manual # V-93461
+    desc: "Set the minimum password length for manually managed applications stated by your organization"
+    type: Numeric
+    profile: microsoft-windows-server-2019-stig-baseline
+    <% if ['High-HVA', 'Moderate-HVA', 'Low-HVA'].include? ENV['BASELINE'] %>
+    value: 20
+    <% elsif ['High', 'Moderate', 'Low'].include? ENV['BASELINE'] %>
+    value: 15
+    <% end %>
+
+  - name: minimum_password_length # V-93463
+    desc: "Set the minimum password length stated by your organization"
+    type: Numeric
+    profile: microsoft-windows-server-2019-stig-baseline
+    <% if ['High-HVA', 'Moderate-HVA', 'Low-HVA'].include? ENV['BASELINE'] %>
+    value: 20
+    <% elsif ['High', 'Moderate', 'Low'].include? ENV['BASELINE'] %>
+    value: 15
+    <% end %>
+
+  - name: maximum_idle_time # V-93509
+    desc: "Set the maximum connection idle time stated by your organization"
+    type: Numeric
+    profile: microsoft-windows-server-2019-stig-baseline
+    <% if ['High-HVA', 'High', 'Moderate-HVA', 'Moderate'].include? ENV['BASELINE'] %>
+    value: 1800
+    <% elsif ENV['BASELINE'].nil? %>
+    value: 1800
+    <% end %>
+
+  - name: maximum_idle_time_phrase # V-93509
+    desc: "Set the maximum connection idle time stated by your organization"
+    type: String
+    profile: microsoft-windows-server-2019-stig-baseline
+    <% if ['High-HVA', 'High', 'Moderate-HVA', 'Moderate'].include? ENV['BASELINE'] %>
+    value: "30 minutes"
+    <% elsif ENV['BASELINE'].nil? %>
+    value: "30 minutes"
     <% end %>
 
   - name: LegalNoticeCaption # V-93149
@@ -383,6 +365,4 @@ inputs:
       - "V-93567" # SI-02(02)
       - "V-93563" # SI-16
       - "V-93565" # SI-16
-    # <% else %>
-    #     required: true
     <% end %>
