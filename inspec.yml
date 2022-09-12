@@ -10,7 +10,7 @@ inspec_version: ">= 4.0"
 
 depends:
 - name: microsoft-windows-server-2019-stig-baseline
-  url: https://github.com/mitre/microsoft-windows-server-2019-stig-baseline/archive/parameterize.tar.gz
+  url: https://github.com/mitre/microsoft-windows-server-2019-stig-baseline/archive/master.tar.gz
 
 inputs:
   - name: system_categorization
@@ -144,7 +144,9 @@ inputs:
     profile: microsoft-windows-server-2019-stig-baseline
     <% if ['High-HVA', 'Moderate-HVA', 'Low-HVA'].include? ENV['BASELINE'] %>
     value: 20
-    <% elsif ['High', 'Moderate', 'Low'].include? ENV['BASELINE'] %>
+    <% elsif ['High', 'Moderate', 'Low'].include? ENV['BASELINE'] %> # Same as the baseline parameter
+    value: 15
+    <% elsif ENV['BASELINE'].nil? %>
     value: 15
     <% end %>
 
@@ -155,6 +157,8 @@ inputs:
     <% if ['High-HVA', 'Moderate-HVA', 'Low-HVA'].include? ENV['BASELINE'] %>
     value: 20
     <% elsif ['High', 'Moderate', 'Low'].include? ENV['BASELINE'] %>
+    value: 15
+    <% elsif ENV['BASELINE'].nil? %>
     value: 15
     <% end %>
 
