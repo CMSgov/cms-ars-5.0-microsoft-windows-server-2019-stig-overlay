@@ -27,7 +27,7 @@ cinc-auditor -v
 
 Latest versions and other installation options are available at https://cinc.sh/start/auditor/.
 
-## Specify your BASELINE system categization as an environment variable
+## Specify your BASELINE system categorization as an environment variable
 ### (if undefined defaults to Moderate baseline)
 
 ```
