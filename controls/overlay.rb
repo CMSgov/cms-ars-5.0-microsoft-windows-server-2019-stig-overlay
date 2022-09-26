@@ -3,6 +3,7 @@ system_categorization = input('system_categorization')
 
 include_controls 'microsoft-windows-server-2019-stig-baseline' do
 
+  ## NIST tags updated due to changes between NIST SP 800-53 rev 4 and rev 5 (https://csrc.nist.gov/csrc/media/Publications/sp/800-53/rev-5/final/documents/sp800-53r4-to-r5-comparison-workbook.xlsx)
   control 'V-93187' do
     tag nist: ["SC-45 (1)"]
   end
