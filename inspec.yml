@@ -162,6 +162,20 @@ inputs:
     value: 15
     <% end %>
 
+  - name: password_history_size # V-93479
+    desc: "Set the password history size stated by your organization"
+    type: Numeric
+    profile: microsoft-windows-server-2019-stig-baseline
+    <% if ['High-HVA', 'Moderate-HVA', 'Low-HVA'].include? ENV['BASELINE'] %>
+    value: 24 # Same as the baseline parameter
+    <% elsif ENV['BASELINE'] == 'High' %>
+    value: 12
+    <% elsif ['Moderate', 'Low'].include? ENV['BASELINE'] %>
+    value: 6
+    <% elsif ENV['BASELINE'].nil? %>
+    value: 6
+    <% end %>
+
   - name: maximum_idle_time # V-93509
     desc: "Set the maximum connection idle time stated by your organization"
     type: Numeric
