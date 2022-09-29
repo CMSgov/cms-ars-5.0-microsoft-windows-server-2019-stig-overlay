@@ -87,20 +87,14 @@ administrators: []
 ```
 
 ## Running This Overlay Directly from Github
-<details><summary>Click to expand</summary>
-<p><br>
 
 ```
 # How to run (linux)
 BASELINE=<your_system_categorization> cinc-auditor exec https://github.com/CMSgov/cms-ars-5.0-microsoft-windows-server-2019-stig-overlay/archive/main.tar.gz --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> -t winrm://<hostname> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
 
-</p>
-</details>
 
 ## Running This Overlay from a local Archive copy 
-<details><summary>Click to expand</summary>
-<p><br>
 If your runner is not always expected to have direct access to GitHub, use the following steps to create an archive bundle of this overlay and all of its dependent tests:
 
 (Git is required to clone the InSpec profile using the instructions below. Git can be downloaded from the [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) site.)
@@ -124,8 +118,6 @@ cd ..
 cinc-auditor archive cms-ars-5.0-microsoft-windows-server-2019-stig-overlay --overwrite
 BASELINE=<your_system_categorization> cinc-auditor exec <name of generated archive> --input-file=<path_to_your_inputs_file/name_of_your_inputs_file.yml> -t winrm://<hostname> --reporter=cli json:<path_to_your_output_file/name_of_your_output_file.json>
 ```
-</p>
-</details>
 
 ### Different Run Options
 
@@ -147,8 +139,6 @@ The JSON InSpec results file may also be loaded into a __[full heimdall server](
 To report a bug or feature request, please open an [issue](https://github.com/CMSgov/cms-ars-5.0-microsoft-windows-server-2019-stig-overlay/issues/new).
 
 ### NOTICE
-<details><summary>Click to expand</summary>
-<p><br>
 © 2022 The MITRE Corporation.
 
 Approved for Public Release; Distribution Unlimited. Case Number 18-3678.
@@ -162,5 +152,3 @@ This software was produced by The MITRE Corporation for the U. S. Government und
 For further information, please contact The MITRE Corporation, Contracts Management Office, 7515 Colshire Drive, McLean, VA 22102-7539, (703) 983-6000.
 
 DISA STIGs are published at: https://public.cyber.mil/stigs/
-</p>
-</details>
