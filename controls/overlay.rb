@@ -56,7 +56,7 @@ include_controls 'microsoft-windows-server-2019-stig-baseline' do
   end
 
   ## NA
-  unless overlay_controls.empty? # Test with !oc.any?
+  unless overlay_controls.empty?
     overlay_controls.each do |overlay_control|
       control overlay_control do
         impact 0.0
