@@ -144,8 +144,8 @@ inputs:
     profile: microsoft-windows-server-2019-stig-baseline
     <% if ['High-HVA', 'Moderate-HVA', 'Low-HVA'].include? ENV['BASELINE'] %>
     value: 20
-    <% elsif ['High', 'Moderate', 'Low'].include? ENV['BASELINE'] %> # Same as the baseline parameter
-    value: 15
+    <% elsif ['High', 'Moderate', 'Low'].include? ENV['BASELINE'] %>
+    value: 15 # Same as the baseline parameter
     <% elsif ENV['BASELINE'].nil? %>
     value: 15
     <% end %>
@@ -161,6 +161,9 @@ inputs:
     <% elsif ENV['BASELINE'].nil? %>
     value: 15
     <% end %>
+
+  # V-93471 minimum_password_age input value is the same as the baseline parameter of 1
+  # V-93477 maximum_password_age input value is the same as the baseline parameter of 60
 
   - name: password_history_size # V-93479
     desc: "Set the password history size stated by your organization"
@@ -196,14 +199,6 @@ inputs:
     value: "30 minutes"
     <% end %>
 
-  - name: LegalNoticeCaption # V-93149
-    desc: "Use the default values or add an organization-defined legal notice caption"
-    type: Array
-    value:
-      - "CMS Notice and Consent Banner"
-      - "US Department of Health and Human Services Warning Statement"
-    profile: microsoft-windows-server-2019-stig-baseline
-
   - name: LegalNoticeText # V-93147
     type: string
     profile: microsoft-windows-server-2019-stig-baseline
@@ -212,6 +207,14 @@ inputs:
     * Unauthorized or improper use of this system is prohibited and may result in disciplinary action and/or civil and criminal penalties.
     * Personal use of social media and networking sites on this system is limited as to not interfere with official work duties and is subject to monitoring.
     * By using this system, you understand and consent to the following:  - The Government may monitor, record, and audit your system usage, including usage of personal devices and email systems for official duties or to conduct HHS business. Therefore, you have no reasonable expectation of privacy regarding any communication or data transiting or stored on this system. At any time, and for any lawful Government purpose, the government may monitor, intercept, and search and seize any communication or data transiting or stored on this system.  - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purposes."
+
+  - name: LegalNoticeCaption # V-93149
+    desc: "Use the default values or add an organization-defined legal notice caption"
+    type: Array
+    value:
+      - "CMS Notice and Consent Banner"
+      - "US Department of Health and Human Services Warning Statement"
+    profile: microsoft-windows-server-2019-stig-baseline
 
   - name: overlay_controls
     desc: 'List of inapplicable controls/requirements in ARS 5.0 based on the system categorization'
