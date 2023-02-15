@@ -170,7 +170,7 @@ inputs:
     type: Numeric
     profile: microsoft-windows-server-2019-stig-baseline
     <% if ['High-HVA', 'Moderate-HVA', 'Low-HVA'].include? ENV['BASELINE'] %>
-    value: 24 # Max value to disallow password reuse
+    value: 24 # Max value to disallow password reuse (also same as the baseline parameter )
     <% end %>
 
   - name: maximum_idle_time # V-93509
