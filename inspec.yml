@@ -40,20 +40,6 @@ inputs:
     value: 60
     <% end %>
 
-  - name: temporary_account_period_phrase # V-92975
-    desc: "List the number of hours/days that temporary accounts remain active for"
-    type: String
-    profile: microsoft-windows-server-2019-stig-baseline
-    <% if ['High-HVA', 'Moderate-HVA'].include? ENV['BASELINE'] %>
-    value: "12 hours"
-    <% elsif ENV['BASELINE'] == 'High' %>
-    value: "30 days"
-    <% elsif ENV['BASELINE'] == 'Moderate' %>
-    value: "60 days"
-    <% elsif ENV['BASELINE'].nil? %>
-    value: "60 days"
-    <% end %>
-
   - name: emergency_account_period # V-92977
     desc: "List the number of days that temporary accounts remain active for"
     type: Numeric
@@ -64,18 +50,6 @@ inputs:
     value: 1
     <% elsif ENV['BASELINE'].nil? %>
     value: 1
-    <% end %>
-
-  - name: emergency_account_period_phrase # V-92977
-    desc: "List the number of hours/days that temporary accounts remain active for"
-    type: String
-    profile: microsoft-windows-server-2019-stig-baseline
-    <% if ['High-HVA', 'Moderate-HVA'].include? ENV['BASELINE'] %>
-    value: "12 hours"
-    <% elsif ['High', 'Moderate'].include? ENV['BASELINE'] %>
-    value: "24 hours"
-    <% elsif ENV['BASELINE'].nil? %>
-    value: "24 hours"
     <% end %>
 
   - name: max_pass_lockout # V-93141
@@ -181,16 +155,6 @@ inputs:
     value: 1800
     <% elsif ENV['BASELINE'].nil? %>
     value: 1800
-    <% end %>
-
-  - name: maximum_idle_time_phrase # V-93509
-    desc: "Set the maximum connection idle time stated by your organization"
-    type: String
-    profile: microsoft-windows-server-2019-stig-baseline
-    <% if ['High-HVA', 'High', 'Moderate-HVA', 'Moderate'].include? ENV['BASELINE'] %>
-    value: "30 minutes"
-    <% elsif ENV['BASELINE'].nil? %>
-    value: "30 minutes"
     <% end %>
 
   - name: LegalNoticeText # V-93147
