@@ -1,4 +1,6 @@
 # cms-ars-5.0-microsoft-windows-server-2019-stig-overlay
+**CMS’ ISPG (Information Security and Privacy Group) decided to discontinue funding the customization of MITRE’s Security Automation Framework (SAF) for CMS after September 2023. This repo is now in archive mode, but still accessible. For more information about SAF with current links, see https://security.cms.gov/learn/security-automation-framework-saf**
+
 
 InSpec profile overlay to validate the secure configuration of Microsoft Windows Server 2019 against [DISA's](https://public.cyber.mil/stigs/) Microsoft Windows Server 2019 Security Technical Implementation Guide (STIG) Version 1, Release 3 tailored for [CMS ARS 5.0](https://security.cms.gov/library/cms-acceptable-risk-safeguards-ars) for all system categorizations.
 
